@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --unum-blue: #015294;
+  --unum-slate: #5E88A1;
+  --unum-gray: #727A80;
+  --unum-sky: #00A6D7;
+  --unum-lawn: #8DC24B;
+  --unum-orange: #EB9400;
+}
+
+body {
+  color: #1a1a1a;
+  background: #fdfdfd;
+}
+
+@theme {
+  --font-sans: var(--font-inter);
+  
+  --color-unum-blue: #015294;
+  --color-unum-slate: #5E88A1;
+  --color-unum-gray: #727A80;
+  --color-unum-sky: #00A6D7;
+  --color-unum-lawn: #8DC24B;
+  --color-unum-orange: #EB9400;
+
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+}
+
+@utility animate-in {
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@utility slide-in-from-right {
+  animation-name: slide-in-right;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
