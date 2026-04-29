@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useServices } from '../hooks/useServices';
 import { ServiceCharts } from '../components/ServiceCharts';
 import { ServiceList } from '../components/ServiceList';
 import { ServiceDrawer } from '../components/ServiceDrawer';
+import { WelcomeModal } from '../components/WelcomeModal';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { LayoutGrid } from 'lucide-react';
@@ -12,7 +13,22 @@ import { LayoutGrid } from 'lucide-react';
 export default function PortfolioPage() {
   const { services, addService, removeService, isLoaded } = useServices();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [highlightedId, setHighlightedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const hasSeenModal = localStorage.getItem('unum_welcome_seen');
+      if (!hasSeenModal) {
+        setIsHelpOpen(true);
+      }
+    }
+  }, [isLoaded]);
+
+  const closeHelp = () => {
+    localStorage.setItem('unum_welcome_seen', 'true');
+    setIsHelpOpen(false);
+  };
 
   if (!isLoaded) {
     return (
@@ -27,7 +43,8 @@ export default function PortfolioPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50/30">
-      <Header />
+      <Header onOpenHelp={() => setIsHelpOpen(true)} />
+      <WelcomeModal isOpen={isHelpOpen} onClose={closeHelp} />
       
       <main className="flex-1 p-4 md:p-8">
         <div className="max-w-7xl mx-auto">
