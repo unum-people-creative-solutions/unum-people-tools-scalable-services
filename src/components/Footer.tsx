@@ -27,7 +27,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 hover:opacity-80 transition-opacity"
             >
-              <div className="relative w-12 h-12 brightness-0 invert">
+              <div className="relative w-12 h-12">
                 <Image 
                   src="/images/logo_simbolo.png" 
                   alt="Unum Simbolo" 
@@ -35,7 +35,7 @@ export function Footer() {
                   className="object-contain"
                 />
               </div>
-              <div className="relative w-28 h-6 brightness-0 invert">
+              <div className="relative w-28 h-6">
                 <Image 
                   src="/images/logo_texto.png" 
                   alt="Unum People" 
@@ -47,7 +47,10 @@ export function Footer() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-blue-300 uppercase tracking-widest font-semibold">
-          <p>© 2026 Unum People. Todos os direitos reservados.</p>
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <p>© 2026 Unum People. Todos os direitos reservados.</p>
+            <a href="/privacidade" className="hover:text-white transition-colors">Privacidade</a>
+          </div>
           <p>SaaS Innovative Solutions</p>
         </div>
       </div>

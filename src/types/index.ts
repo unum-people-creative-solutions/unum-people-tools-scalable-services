@@ -7,6 +7,34 @@ export interface Service {
   lucratividade: number;
 }
 
+export interface PricingData {
+  // Custos Fixos
+  custosFixos: {
+    aluguel: number;
+    energia: number;
+    internet: number;
+    contador: number;
+    softwares: number;
+    equipe: number;
+    proLabore: number;
+  };
+  // Capacidade Produtiva
+  capacidade: {
+    diasTrabalhados: number;
+    horasDiarias: number;
+    percentualOciosidade: number;
+  };
+  // Parametrização do Serviço Atual
+  servico: {
+    nome: string;
+    horasEstimadas: number;
+    materiaisDiretos: number;
+    deslocamento: number;
+    impostosPercentual: number;
+    precoDesejado: number;
+  };
+}
+
 export type StepKey = 'esforco' | 'complexidade' | 'padronizacao' | 'lucratividade';
 
 export interface Question {

@@ -13,12 +13,18 @@ export function useServices() {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
-        setServices(JSON.parse(stored));
+        const parsed = JSON.parse(stored);
+        setTimeout(() => {
+          setServices(parsed);
+          setIsLoaded(true);
+        }, 0);
       } catch (e) {
         console.error('Failed to parse services from localStorage', e);
+        setTimeout(() => setIsLoaded(true), 0);
       }
+    } else {
+      setTimeout(() => setIsLoaded(true), 0);
     }
-    setIsLoaded(true);
   }, []);
 
   useEffect(() => {
