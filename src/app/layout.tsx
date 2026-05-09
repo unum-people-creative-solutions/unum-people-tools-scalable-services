@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { CookieBanner } from '../components/CookieBanner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -8,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Service Portfolio Mapping | Unum People',
-  description: 'Mapeamento estratégico de portfólio de serviços - Unum People Creative Solutions',
+  title: 'Unum People | Ferramentas de Estratégia',
+  description: 'Ecossistema de ferramentas estratégicas da Unum People Creative Solutions',
 };
 
 export default function RootLayout({
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${inter.variable} font-sans antialiased bg-gray-50`}>
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

@@ -1,97 +1,108 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { useServices } from '../hooks/useServices';
-import { ServiceCharts } from '../components/ServiceCharts';
-import { ServiceList } from '../components/ServiceList';
-import { ServiceDrawer } from '../components/ServiceDrawer';
-import { WelcomeModal } from '../components/WelcomeModal';
+import React from 'react';
+import Link from 'next/link';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { LayoutGrid } from 'lucide-react';
+import { LayoutGrid, ArrowRight, BarChart3, Settings, Calculator } from 'lucide-react';
 
-export default function PortfolioPage() {
-  const { services, addService, removeService, isLoaded } = useServices();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isHelpOpen, setIsHelpOpen] = useState(false);
-  const [highlightedId, setHighlightedId] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (isLoaded) {
-      const hasSeenModal = localStorage.getItem('unum_welcome_seen');
-      if (!hasSeenModal) {
-        setIsHelpOpen(true);
-      }
-    }
-  }, [isLoaded]);
-
-  const closeHelp = () => {
-    localStorage.setItem('unum_welcome_seen', 'true');
-    setIsHelpOpen(false);
-  };
-
-  if (!isLoaded) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-pulse flex flex-col items-center">
-          <div className="w-12 h-12 bg-unum-blue/20 rounded-full mb-4"></div>
-          <p className="text-unum-gray font-medium">Carregando portfólio...</p>
-        </div>
-      </div>
-    );
+const tools = [
+  {
+    title: 'Análise de Portfólio',
+    description: 'Mapeamento estratégico de serviços com foco em escalabilidade e rentabilidade.',
+    href: '/portfolio-analises',
+    icon: LayoutGrid,
+    color: 'bg-unum-blue',
+    status: 'Disponível'
+  },
+  {
+    title: 'Simulador de Precificação',
+    description: 'Elimine o achismo ao cobrar. Calcule o ponto de equilíbrio e margem de lucro real.',
+    href: '/simulador-precificacao',
+    icon: Calculator,
+    color: 'bg-unum-blue',
+    status: 'Disponível'
+  },
+  {
+    title: 'Viabilidade de Campanhas',
+    description: 'Calcule o esforço necessário para obter retorno em anúncios antes de investir.',
+    href: '/calculadora-viabilidade',
+    icon: BarChart3,
+    color: 'bg-unum-blue',
+    status: 'Disponível'
+  },
+  {
+    title: 'Configurador de Processos',
+    description: 'Ferramenta para automação e padronização de fluxos internos (Em desenvolvimento).',
+    href: '#',
+    icon: Settings,
+    color: 'bg-unum-gray',
+    status: 'Em breve'
   }
+];
 
+export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50/30">
-      <Header onOpenHelp={() => setIsHelpOpen(true)} />
-      <WelcomeModal isOpen={isHelpOpen} onClose={closeHelp} />
+      <Header />
       
       <main className="flex-1 p-4 md:p-8">
-        <div className="max-w-7xl mx-auto">
-          <header className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <LayoutGrid className="text-unum-blue" size={20} />
-                <h1 className="text-xl font-black text-unum-blue uppercase tracking-tighter">
-                  Mapeamento Estratégico
-                </h1>
-              </div>
-              <p className="text-unum-gray text-xs font-bold uppercase tracking-widest opacity-70">
-                Análise de Escalabilidade e Rentabilidade
-              </p>
-            </div>
-            
-            <button
-              onClick={() => setIsDrawerOpen(true)}
-              className="bg-unum-blue hover:bg-unum-slate text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg shadow-unum-blue/20 flex items-center justify-center gap-2 active:scale-95 text-xs uppercase tracking-widest"
-            >
-              Novo Serviço
-            </button>
+        <div className="max-w-7xl mx-auto py-12 md:py-20">
+          <header className="mb-16 text-center">
+            <h1 className="text-4xl md:text-6xl font-black text-unum-blue uppercase tracking-tighter mb-6">
+              Ferramentas Unum People
+            </h1>
+            <p className="text-unum-gray text-lg md:text-xl max-w-2xl mx-auto font-medium">
+              Ecossistema de soluções inteligentes para análise estratégica e otimização de processos.
+            </p>
           </header>
 
-          <section className="space-y-10">
-            <ServiceCharts 
-              services={services} 
-              highlightedId={highlightedId} 
-            />
-            
-            <ServiceList 
-              services={services} 
-              onRemove={removeService} 
-              onHover={setHighlightedId}
-              onAddClick={() => setIsDrawerOpen(true)}
-            />
-          </section>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tools.map((tool) => (
+              <div 
+                key={tool.title}
+                className={`group relative bg-white p-8 rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 ${
+                  tool.href !== '#' ? 'hover:shadow-xl hover:-translate-y-1' : 'opacity-75'
+                }`}
+              >
+                <div className={`${tool.color} w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-unum-blue/10`}>
+                  <tool.icon size={32} />
+                </div>
+                
+                <div className="mb-4">
+                  <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full ${
+                    tool.status === 'Disponível' ? 'bg-unum-lawn/10 text-unum-lawn' : 'bg-gray-100 text-gray-400'
+                  }`}>
+                    {tool.status}
+                  </span>
+                </div>
+
+                <h2 className="text-2xl font-bold text-unum-blue mb-4">
+                  {tool.title}
+                </h2>
+                
+                <p className="text-unum-gray text-base leading-relaxed mb-10 h-20">
+                  {tool.description}
+                </p>
+
+                {tool.href !== '#' ? (
+                  <Link 
+                    href={tool.href}
+                    className="inline-flex items-center gap-2 text-unum-blue font-bold text-sm uppercase tracking-widest group-hover:gap-4 transition-all"
+                  >
+                    Acessar Ferramenta
+                    <ArrowRight size={18} />
+                  </Link>
+                ) : (
+                  <span className="text-gray-400 font-bold text-sm uppercase tracking-widest cursor-not-allowed">
+                    Acesso Restrito
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </main>
 
       <Footer />
-
-      <ServiceDrawer 
-        isOpen={isDrawerOpen} 
-        onClose={() => setIsDrawerOpen(false)} 
-        onSave={addService} 
-      />
     </div>
   );
 }
