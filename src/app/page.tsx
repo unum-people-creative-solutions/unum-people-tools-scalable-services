@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { LayoutGrid, ArrowRight, BarChart3, Settings, Calculator } from 'lucide-react';
+import { LayoutGrid, ArrowRight, BarChart3, Target, Calculator } from 'lucide-react';
 
 const tools = [
   {
@@ -30,10 +30,10 @@ const tools = [
     status: 'Disponível'
   },
   {
-    title: 'Configurador de Processos',
-    description: 'Ferramenta para automação e padronização de fluxos internos (Em desenvolvimento).',
+    title: 'Mapeador de Benchmark de Aquisição',
+    description: 'Compare suas métricas de marketing com as referências do mercado para identificar gaps.',
     href: '#',
-    icon: Settings,
+    icon: Target,
     color: 'bg-unum-gray',
     status: 'Em breve'
   }
