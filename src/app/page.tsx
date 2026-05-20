@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { AdUnit } from '../components/AdUnit';
 import { LayoutGrid, ArrowRight, BarChart3, Target, Calculator } from 'lucide-react';
 
 const tools = [
@@ -55,6 +56,8 @@ export default function Home() {
             </p>
           </header>
 
+          <AdUnit className="mb-16" slot="1270666901" />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tools.map((tool) => (
               <div 
@@ -99,6 +102,8 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          <AdUnit className="mt-20" slot="7715444307" />
         </div>
       </main>
 

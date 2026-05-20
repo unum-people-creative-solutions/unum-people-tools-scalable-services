@@ -4,6 +4,7 @@ import React from 'react';
 import { usePricing } from '../../hooks/usePricing';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { AdUnit } from '../../components/AdUnit';
 import { WelcomeModal } from '../../components/WelcomeModal';
 import { CurrencyInput } from '../../components/CurrencyInput';
 import { 
@@ -144,6 +145,8 @@ export default function PrecificacaoPage() {
               </p>
             </div>
           </header>
+
+          <AdUnit className="mb-10" slot="1270666901" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Inputs Column */}
@@ -430,6 +433,8 @@ export default function PrecificacaoPage() {
           </div>
         </div>
       </main>
+
+      <AdUnit className="mb-8" slot="7715444307" />
 
       <Footer />
     </div>
