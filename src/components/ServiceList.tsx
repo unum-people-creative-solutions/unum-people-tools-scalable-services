@@ -33,7 +33,7 @@ export function ServiceList({ services, onRemove, onHover, onAddClick }: Service
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-      <div className="p-6 border-b flex justify-between items-center bg-gray-50/50">
+      <div className="p-4 sm:p-6 border-b flex flex-col sm:flex-row justify-between sm:items-center gap-4 bg-gray-50/50">
         <div>
           <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2">
             <Target className="text-blue-600" size={20} />
@@ -41,24 +41,25 @@ export function ServiceList({ services, onRemove, onHover, onAddClick }: Service
           </h2>
           <p className="text-sm text-gray-500">Serviços ordenados pelo potencial estratégico</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-2 sm:gap-3">
           <button
             onClick={() => exportToCSV(services)}
             disabled={services.length === 0}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <FileDown size={18} /> Exportar CSV
+            <FileDown size={18} /> <span className="sm:inline">Exportar</span>
           </button>
           <button
             onClick={onAddClick}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all"
           >
-            <Plus size={18} /> Novo Serviço
+            <Plus size={18} /> <span className="sm:inline">Novo</span>
           </button>
         </div>
       </div>
 
-      <div className="overflow-x-auto">
+      {/* Desktop View */}
+      <div className="hidden md:block overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-gray-50 text-gray-600 text-[11px] uppercase tracking-wider font-semibold">
@@ -129,7 +130,7 @@ export function ServiceList({ services, onRemove, onHover, onAddClick }: Service
                       <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => onRemove(service.id)}
-                          className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100"
+                          className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all md:opacity-0 group-hover:opacity-100"
                         >
                           <Trash2 size={18} />
                         </button>
@@ -140,6 +141,72 @@ export function ServiceList({ services, onRemove, onHover, onAddClick }: Service
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile View */}
+      <div className="md:hidden divide-y divide-gray-100">
+        {services.length === 0 ? (
+          <div className="px-6 py-12 text-center text-gray-400">
+            Nenhum serviço cadastrado ainda.
+          </div>
+        ) : (
+          [...services]
+            .sort((a, b) => calculateAtratividade(b) - calculateAtratividade(a))
+            .map((service) => {
+              const score = calculateAtratividade(service);
+              const operacao = (service.esforco + service.complexidade) / 2;
+              const decisao = (service.padronizacao + service.lucratividade) / 2;
+
+              return (
+                <div key={service.id} className="p-4 space-y-4">
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1 pr-4">
+                      <span className="font-bold text-gray-900 block text-base mb-1">{service.nome}</span>
+                      <span className={cn(
+                        "inline-flex px-3 py-1 rounded-full text-[10px] font-black border uppercase tracking-wider",
+                        getScoreColor(score)
+                      )}>
+                        {score.toFixed(1)}% de Atratividade
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => onRemove(service.id)}
+                      className="p-2.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
+                    >
+                      <Trash2 size={20} />
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6 bg-gray-50/50 p-3 rounded-lg border border-gray-100">
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-[10px] text-gray-500 uppercase font-black tracking-tight">Operação</span>
+                        <span className="text-[10px] text-orange-600 font-black">{operacao.toFixed(0)}%</span>
+                      </div>
+                      <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-orange-400" 
+                          style={{ width: `${operacao}%` }}
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-[10px] text-gray-500 uppercase font-black tracking-tight">Decisão</span>
+                        <span className="text-[10px] text-green-600 font-black">{decisao.toFixed(0)}%</span>
+                      </div>
+                      <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-green-500" 
+                          style={{ width: `${decisao}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+        )}
       </div>
     </div>
   );

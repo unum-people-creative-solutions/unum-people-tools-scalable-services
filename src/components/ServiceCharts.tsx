@@ -65,6 +65,12 @@ const MATRIX_INFO = {
   }
 };
 
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: { payload: Service; value: number }[];
+  id?: string;
+}
+
 export function ServiceCharts({ services, highlightedId }: ServiceChartsProps) {
   const [hoveredInfo, setHoveredInfo] = useState<'operacao' | 'decisao' | null>(null);
 
@@ -76,7 +82,7 @@ export function ServiceCharts({ services, highlightedId }: ServiceChartsProps) {
     return quadrants.bl;
   };
 
-  const CustomTooltip = ({ active, payload, id }: any) => {
+  const CustomTooltip = ({ active, payload, id }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       const x = payload[0].value;
@@ -109,7 +115,7 @@ export function ServiceCharts({ services, highlightedId }: ServiceChartsProps) {
 
   const renderChart = (
     id: 'operacao' | 'decisao',
-    data: any[],
+    data: Service[],
     xAxis: string,
     yAxis: string,
     xLabel: string,

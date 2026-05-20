@@ -37,10 +37,6 @@ export function ServiceDrawer({ isOpen, onClose, onSave }: ServiceDrawerProps) {
 
   if (!isOpen) return null;
 
-  const handleToggle = (questionId: string) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: !prev[questionId] }));
-  };
-
   const calculateScore = (stepKey: StepKey) => {
     const stepQuestions = QUESTIONS[stepKey];
     const yesCount = stepQuestions.filter((q) => answers[q.id]).length;

@@ -5,6 +5,7 @@ import { usePricing } from '../../hooks/usePricing';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { WelcomeModal } from '../../components/WelcomeModal';
+import { CurrencyInput } from '../../components/CurrencyInput';
 import { 
   Calculator, 
   TrendingUp, 
@@ -14,7 +15,8 @@ import {
   Info,
   CheckCircle2,
   XCircle,
-  AlertTriangle
+  AlertTriangle,
+  Settings
 } from 'lucide-react';
 
 export default function PrecificacaoPage() {
@@ -174,42 +176,29 @@ export default function PrecificacaoPage() {
                     { label: 'Softwares (SaaS)', key: 'softwares' },
                     { label: 'Salários Equipe', key: 'equipe' },
                   ].map((field) => (
-                    <div key={field.key}>
-                      <label className="block text-[10px] font-black text-unum-gray uppercase tracking-widest mb-2">
-                        {field.label}
-                      </label>
-                      <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">R$</span>
-                        <input
-                          type="number"
-                          value={data.custosFixos[field.key as keyof typeof data.custosFixos] || ''}
-                          onChange={(e) => updateCustosFixos({ [field.key]: Number(e.target.value) })}
-                          className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-unum-blue focus:ring-2 focus:ring-unum-blue/10 focus:border-unum-blue outline-none transition-all"
-                          placeholder="0,00"
-                        />
-                      </div>
-                    </div>
+                    <CurrencyInput
+                      key={field.key}
+                      label={field.label}
+                      value={data.custosFixos[field.key as keyof typeof data.custosFixos] || 0}
+                      onChange={(value) => updateCustosFixos({ [field.key]: value })}
+                    />
                   ))}
                   <div className="lg:col-span-1">
-                    <label className="flex items-center gap-1 text-[10px] font-black text-unum-blue uppercase tracking-widest mb-2 group cursor-help">
-                      Pró-labore
-                      <div className="relative">
-                        <Info size={12} className="text-unum-blue/40 group-hover:text-unum-blue transition-colors" />
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 bg-unum-slate text-[10px] text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-xl normal-case font-medium">
-                          Salário fixo do proprietário. Não confunda com o lucro da empresa!
+                    <CurrencyInput
+                      label="Pró-labore"
+                      value={data.custosFixos.proLabore || 0}
+                      onChange={(value) => updateCustosFixos({ proLabore: value })}
+                      className="bg-unum-blue/5 border-unum-blue/10"
+                      labelClassName="text-unum-blue"
+                      icon={
+                        <div className="group cursor-help relative">
+                          <Info size={12} className="text-unum-blue/40 group-hover:text-unum-blue transition-colors" />
+                          <div className="absolute bottom-full right-0 mb-2 w-48 p-2 bg-unum-slate text-[10px] text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-xl normal-case font-medium">
+                            Salário fixo do proprietário. Não confunda com o lucro da empresa!
+                          </div>
                         </div>
-                      </div>
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">R$</span>
-                      <input
-                        type="number"
-                        value={data.custosFixos.proLabore || ''}
-                        onChange={(e) => updateCustosFixos({ proLabore: Number(e.target.value) })}
-                        className="w-full pl-9 pr-4 py-3 bg-unum-blue/5 border border-unum-blue/10 rounded-xl text-sm font-bold text-unum-blue focus:ring-2 focus:ring-unum-blue/10 focus:border-unum-blue outline-none transition-all"
-                        placeholder="0,00"
-                      />
-                    </div>
+                      }
+                    />
                   </div>
                 </div>
               </section>
@@ -303,7 +292,7 @@ export default function PrecificacaoPage() {
                       value={data.servico.nome}
                       onChange={(e) => updateServico({ nome: e.target.value })}
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-unum-blue focus:ring-2 focus:ring-unum-blue/10 focus:border-unum-blue outline-none transition-all"
-                      placeholder="Ex: Identidade Visual ou Instalação de Fachada"
+                      placeholder="Ex: Instalação de Ar Condicionado"
                     />
                   </div>
                   <div>
@@ -321,36 +310,16 @@ export default function PrecificacaoPage() {
                       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">h</span>
                     </div>
                   </div>
-                  <div>
-                    <label className="block text-[10px] font-black text-unum-gray uppercase tracking-widest mb-2">
-                      Materiais Diretos
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">R$</span>
-                      <input
-                        type="number"
-                        value={data.servico.materiaisDiretos || ''}
-                        onChange={(e) => updateServico({ materiaisDiretos: Number(e.target.value) })}
-                        className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-unum-blue focus:ring-2 focus:ring-unum-blue/10 focus:border-unum-blue outline-none transition-all"
-                        placeholder="0,00"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-black text-unum-gray uppercase tracking-widest mb-2">
-                      Deslocamento / Extras
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">R$</span>
-                      <input
-                        type="number"
-                        value={data.servico.deslocamento || ''}
-                        onChange={(e) => updateServico({ deslocamento: Number(e.target.value) })}
-                        className="w-full pl-9 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-unum-blue focus:ring-2 focus:ring-unum-blue/10 focus:border-unum-blue outline-none transition-all"
-                        placeholder="0,00"
-                      />
-                    </div>
-                  </div>
+                  <CurrencyInput
+                    label="Materiais Diretos"
+                    value={data.servico.materiaisDiretos || 0}
+                    onChange={(value) => updateServico({ materiaisDiretos: value })}
+                  />
+                  <CurrencyInput
+                    label="Deslocamento / Extras"
+                    value={data.servico.deslocamento || 0}
+                    onChange={(value) => updateServico({ deslocamento: value })}
+                  />
                   <div>
                     <label className="block text-[10px] font-black text-unum-gray uppercase tracking-widest mb-2">
                       Impostos (%)
@@ -372,7 +341,7 @@ export default function PrecificacaoPage() {
 
             {/* Results Column */}
             <div className="lg:col-span-4 space-y-8">
-              <section className="bg-unum-slate rounded-2xl shadow-2xl p-8 text-white sticky top-8">
+              <section className="bg-unum-slate rounded-2xl shadow-2xl p-8 text-white sticky top-24">
                 <header className="mb-8 border-b border-white/10 pb-6">
                   <div className="flex items-center gap-2 mb-2">
                     <TrendingUp size={20} className="text-unum-blue" />
@@ -403,19 +372,14 @@ export default function PrecificacaoPage() {
 
                   {/* Simulador de Preço */}
                   <div className="pt-8 border-t border-white/10">
-                    <label className="block text-[10px] font-black text-unum-blue uppercase tracking-widest mb-4">
-                      Quanto deseja cobrar?
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 font-black">R$</span>
-                      <input
-                        type="number"
-                        value={data.servico.precoDesejado || ''}
-                        onChange={(e) => updateServico({ precoDesejado: Number(e.target.value) })}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 pl-12 pr-6 text-2xl font-black text-white focus:bg-white/10 focus:border-unum-blue outline-none transition-all placeholder:text-white/10"
-                        placeholder="0,00"
-                      />
-                    </div>
+                    <CurrencyInput
+                      label="Quanto deseja cobrar?"
+                      value={data.servico.precoDesejado || 0}
+                      onChange={(value) => updateServico({ precoDesejado: value })}
+                      labelClassName="text-white/80"
+                      className="bg-white/5 border-white/10 py-5 pl-12 pr-6 text-2xl font-black text-white focus:bg-white/10 focus:border-unum-blue placeholder:text-white/10"
+                      prefix="R$"
+                    />
                   </div>
 
                   {/* Margem e Lucro */}
@@ -469,26 +433,5 @@ export default function PrecificacaoPage() {
 
       <Footer />
     </div>
-  );
-}
-
-// Subcomponent used for the icon in the page header
-function Settings({ size, ...props }: { size: number; className?: string; [key: string]: any }) {
-  return (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width={size} 
-      height={size} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      {...props}
-    >
-      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
   );
 }
