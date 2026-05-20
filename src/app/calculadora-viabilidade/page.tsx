@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { AdUnit } from '../../components/AdUnit';
 import { WelcomeModal } from '../../components/WelcomeModal';
 import { CurrencyInput } from '../../components/CurrencyInput';
 import { NumericFormat } from 'react-number-format';
@@ -645,6 +646,8 @@ export default function ViabilidadePage() {
             </div>
           </header>
 
+          <AdUnit className="mb-8" slot="1270666901" />
+
           <section className="min-h-[400px]">
             {step === 'CHOOSE_PATH' && renderStep1()}
             {step === 'FILL_FORM' && renderStep2()}
@@ -652,6 +655,8 @@ export default function ViabilidadePage() {
           </section>
         </div>
       </main>
+
+      <AdUnit className="mb-8" slot="7715444307" />
 
       <WelcomeModal
         isOpen={isHelpOpen}
