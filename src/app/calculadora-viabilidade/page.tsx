@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { WelcomeModal } from '../../components/WelcomeModal';
+import { CurrencyInput } from '../../components/CurrencyInput';
 import { NumericFormat } from 'react-number-format';
 import { 
   BarChart3, 
@@ -243,28 +244,19 @@ export default function ViabilidadePage() {
       <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm space-y-8">
         <div className="grid md:grid-cols-2 gap-6">
           {/* TM */}
-          <div className="space-y-2">
-            <label className="flex items-center gap-2 text-sm font-bold text-gray-700">
-              Ticket Médio
+          <CurrencyInput
+            label="Ticket Médio"
+            value={formData.ticketMedio || 0}
+            onChange={(value) => setFormData(prev => ({ ...prev, ticketMedio: value }))}
+            icon={
               <div className="group relative">
                 <Info size={14} className="text-gray-300 cursor-help" />
-                <div className="hidden group-hover:block absolute z-10 w-48 p-2 bg-gray-800 text-white text-[10px] rounded shadow-lg -top-2 left-6">
+                <div className="hidden group-hover:block absolute z-10 w-48 p-2 bg-gray-800 text-white text-[10px] rounded shadow-lg -top-2 left-6 normal-case font-medium">
                   Por qual valor você vende este serviço ou produto?
                 </div>
               </div>
-            </label>
-            <NumericFormat
-              value={formData.ticketMedio || ''}
-              onValueChange={(values) => handleValueChange('ticketMedio', values)}
-              thousandSeparator="."
-              decimalSeparator=","
-              prefix="R$ "
-              decimalScale={2}
-              fixedDecimalScale
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-unum-blue focus:border-transparent outline-none transition-all"
-              placeholder="R$ 0,00"
-            />
-          </div>
+            }
+          />
 
           {/* Custo Variável */}
           <div className="space-y-2">
