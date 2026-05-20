@@ -24,6 +24,11 @@ import {
   Zap
 } from 'lucide-react';
 
+export const metadata = {
+  title: 'Calculadora de Viabilidade de Campanha (ROI/CAC)',
+  description: 'Simule o retorno de investimento (ROI) e o custo de aquisição (CAC) de suas campanhas de anúncios antes de investir.',
+};
+
 type Step = 'CHOOSE_PATH' | 'FILL_FORM' | 'DIAGNOSIS';
 type Scenario = 'BUDGET_TO_EFFORT' | 'GOAL_TO_INVESTMENT';
 

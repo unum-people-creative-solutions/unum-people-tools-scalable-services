@@ -20,6 +20,11 @@ import {
   Settings
 } from 'lucide-react';
 
+export const metadata = {
+  title: 'Simulador de Precificação e Margem de Lucro',
+  description: 'Calcule o lucro real de seus serviços considerando custos fixos, variáveis, impostos e margem líquida.',
+};
+
 export default function PrecificacaoPage() {
   const { data, updateCustosFixos, updateCapacidade, updateServico, isLoaded, calculations } = usePricing();
   const [isHelpOpen, setIsHelpOpen] = React.useState(false);

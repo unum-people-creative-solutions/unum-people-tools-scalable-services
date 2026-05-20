@@ -5,6 +5,11 @@ import { Footer } from '../components/Footer';
 import { AdUnit } from '../components/AdUnit';
 import { LayoutGrid, ArrowRight, BarChart3, Target, Calculator } from 'lucide-react';
 
+export const metadata = {
+  title: 'Home',
+  description: 'Ferramentas inteligentes da Unum People para análise estratégica, ROI de campanhas e lucratividade de serviços.',
+};
+
 const tools = [
   {
     title: 'Análise de Portfólio',
