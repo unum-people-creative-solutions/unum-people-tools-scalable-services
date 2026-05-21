@@ -1,13 +1,29 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { AdUnit } from '../AdUnit';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 describe('AdUnit', () => {
+  let resizeCallback: (entries: any[]) => void;
+
   beforeEach(() => {
     // Limpa o window.adsbygoogle antes de cada teste
     (window as any).adsbygoogle = [];
     vi.clearAllMocks();
+
+    // Captura o callback do ResizeObserver
+    vi.spyOn(window, 'ResizeObserver').mockImplementation(function (this: any, callback: any) {
+      resizeCallback = callback;
+      this.observe = vi.fn();
+      this.unobserve = vi.fn();
+      this.disconnect = vi.fn();
+    } as any);
   });
+
+  const triggerResize = (width: number) => {
+    act(() => {
+      resizeCallback([{ contentRect: { width } }]);
+    });
+  };
 
   it('deve renderizar um placeholder em ambiente de desenvolvimento', () => {
     // Simulando ambiente de desenvolvimento
@@ -46,13 +62,23 @@ describe('AdUnit', () => {
     process.env.NODE_ENV = originalEnv;
   });
 
-  it('deve chamar adsbygoogle.push exatamente uma vez por instância em produção', () => {
+  it('deve chamar adsbygoogle.push exatamente uma vez por instância em produção após resize para largura > 0', () => {
     const originalEnv = process.env.NODE_ENV;
     process.env.NODE_ENV = 'production';
     
     const pushSpy = vi.spyOn((window as any).adsbygoogle, 'push');
 
     const { rerender } = render(<AdUnit slot="789012" />);
+    
+    // Inicialmente não deve ter chamado push (largura é 0 por padrão no mock se não disparado)
+    expect(pushSpy).not.toHaveBeenCalled();
+
+    // Dispara resize com largura 0 - ainda não deve chamar
+    triggerResize(0);
+    expect(pushSpy).not.toHaveBeenCalled();
+
+    // Dispara resize com largura positiva
+    triggerResize(728);
     expect(pushSpy).toHaveBeenCalledTimes(1);
 
     // Re-renderizar não deve disparar outro push devido ao adRef
@@ -82,6 +108,7 @@ describe('AdUnit', () => {
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
     render(<AdUnit slot="789012" />);
+    triggerResize(728);
     
     expect(pushSpy).toHaveBeenCalled();
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('AdSense initialization error'), expect.any(Error));
