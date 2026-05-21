@@ -5,6 +5,11 @@ import { Footer } from '../components/Footer';
 import { AdUnit } from '../components/AdUnit';
 import { LayoutGrid, ArrowRight, BarChart3, Target, Calculator } from 'lucide-react';
 
+export const metadata = {
+  title: 'Home',
+  description: 'Ferramentas inteligentes da Unum People para análise estratégica, ROI de campanhas e lucratividade de serviços.',
+};
+
 const tools = [
   {
     title: 'Análise de Portfólio',
@@ -55,8 +60,6 @@ export default function Home() {
               Ecossistema de soluções inteligentes para análise estratégica e otimização de processos.
             </p>
           </header>
-
-          <AdUnit className="mb-16" slot="1270666901" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tools.map((tool) => (

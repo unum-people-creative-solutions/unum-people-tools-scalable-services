@@ -47,6 +47,7 @@ export function WelcomeModal({
           <button 
             onClick={onClose}
             className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
+            aria-label="Fechar"
           >
             <X size={24} />
           </button>

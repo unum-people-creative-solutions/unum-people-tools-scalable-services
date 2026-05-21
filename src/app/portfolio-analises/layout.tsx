@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Mapeamento de Portfólio | Unum People',
-  description: 'Análise estratégica de escalabilidade e rentabilidade de serviços.',
+  title: 'Análise de Portfólio e Escalabilidade de Serviços',
+  description: 'Mapeamento estratégico para identificar serviços com maior potencial de escala e rentabilidade no seu negócio.',
 };
 
 export default function PortfolioLayout({
