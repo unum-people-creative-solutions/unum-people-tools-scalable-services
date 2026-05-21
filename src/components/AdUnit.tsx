@@ -23,15 +23,27 @@ export const AdUnit: React.FC<AdUnitProps> = ({
   className = '',
   style = { display: 'block' },
 }) => {
+  const adRef = React.useRef<boolean>(false);
+  const insRef = React.useRef<HTMLModElement>(null);
+
   useEffect(() => {
+    // Só prosseguimos se estivermos em produção, tivermos um slot e o elemento ins estiver no DOM
+    const isDev = process.env.NODE_ENV === 'development';
+    
+    if (isDev || !slot || !insRef.current || adRef.current) {
+      return;
+    }
+
     try {
       if (typeof window !== 'undefined') {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        const adsbygoogle = (window as any).adsbygoogle || [];
+        adsbygoogle.push({});
+        adRef.current = true;
       }
     } catch (err) {
       console.error('AdSense initialization error:', err);
     }
-  }, []);
+  }, [slot]);
 
   // Em desenvolvimento, mostramos um placeholder visual
   const isDev = process.env.NODE_ENV === 'development';
@@ -54,6 +66,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({
         </div>
       ) : (
         <ins
+          ref={insRef}
           className="adsbygoogle"
           style={style}
           data-ad-client="ca-pub-7103356380607005"

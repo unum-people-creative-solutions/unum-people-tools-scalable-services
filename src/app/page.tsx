@@ -61,8 +61,6 @@ export default function Home() {
             </p>
           </header>
 
-          <AdUnit className="mb-16" slot="1270666901" />
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tools.map((tool) => (
               <div 
