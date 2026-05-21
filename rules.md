@@ -25,5 +25,6 @@ Every modification MUST follow the adaptive TLC-Spec-Driven pipeline:
 ## ✅ Definition of Done
 - Requirements implemented as specified.
 - Linting and build pass.
+- All tests passing (Vitest/Jest).
 - Verification logic (tests or manual check steps) executed and successful.
 - Documentation updated.
