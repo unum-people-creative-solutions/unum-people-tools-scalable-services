@@ -172,10 +172,14 @@ export function ServiceDrawer({ isOpen, onClose, onSave }: ServiceDrawerProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label 
+                  htmlFor="serviceName"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Nome do Serviço
                 </label>
                 <input
+                  id="serviceName"
                   type="text"
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}

@@ -26,10 +26,15 @@ export function CurrencyInput({
   prefix = 'R$',
   icon,
 }: CurrencyInputProps) {
+  const id = React.useId();
+
   return (
     <div className={containerClassName}>
       {label && (
-        <label className={`block text-[10px] font-black text-unum-gray uppercase tracking-widest mb-2 ${labelClassName}`}>
+        <label 
+          htmlFor={id}
+          className={`block text-[10px] font-black text-unum-gray uppercase tracking-widest mb-2 ${labelClassName}`}
+        >
           {label}
         </label>
       )}
@@ -40,6 +45,7 @@ export function CurrencyInput({
           </span>
         )}
         <NumericFormat
+          id={id}
           value={value === 0 ? '' : value}
           onValueChange={(values) => {
             onChange(Number(values.value));
