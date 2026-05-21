@@ -27,22 +27,41 @@ export const AdUnit: React.FC<AdUnitProps> = ({
   const insRef = React.useRef<HTMLModElement>(null);
 
   useEffect(() => {
-    // Só prosseguimos se estivermos em produção, tivermos um slot e o elemento ins estiver no DOM
     const isDev = process.env.NODE_ENV === 'development';
-    
     if (isDev || !slot || !insRef.current || adRef.current) {
       return;
     }
 
-    try {
-      if (typeof window !== 'undefined') {
-        const adsbygoogle = (window as any).adsbygoogle || [];
-        adsbygoogle.push({});
-        adRef.current = true;
+    const initAd = () => {
+      if (adRef.current) return;
+      
+      try {
+        if (typeof window !== 'undefined') {
+          const adsbygoogle = (window as any).adsbygoogle || [];
+          adsbygoogle.push({});
+          adRef.current = true;
+        }
+      } catch (err) {
+        console.error('AdSense initialization error:', err);
       }
-    } catch (err) {
-      console.error('AdSense initialization error:', err);
-    }
+    };
+
+    // Usar ResizeObserver para garantir que o container tenha largura antes de inicializar
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const width = entry.contentRect.width;
+        if (width > 0) {
+          initAd();
+          observer.disconnect();
+        }
+      }
+    });
+
+    observer.observe(insRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [slot]);
 
   // Em desenvolvimento, mostramos um placeholder visual
