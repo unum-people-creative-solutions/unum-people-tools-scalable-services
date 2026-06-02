@@ -23,6 +23,7 @@ export function Header({ onOpenHelp, toolName }: HeaderProps) {
               alt="Unum Simbolo" 
               fill
               className="object-contain"
+              sizes="40px"
             />
           </div>
           <div className="relative w-32 h-8">
@@ -31,6 +32,7 @@ export function Header({ onOpenHelp, toolName }: HeaderProps) {
               alt="Unum People" 
               fill
               className="object-contain"
+              sizes="128px"
             />
           </div>
         </Link>
@@ -39,16 +41,16 @@ export function Header({ onOpenHelp, toolName }: HeaderProps) {
           {onOpenHelp && (
             <button
               onClick={onOpenHelp}
-              className="flex items-center gap-2 text-xs font-bold text-unum-gray hover:text-unum-blue uppercase tracking-widest transition-colors group"
+              className="flex items-center gap-2 text-xs font-bold text-brand-grey hover:text-brand-blue uppercase tracking-widest transition-colors group"
             >
-              <HelpCircle size={18} className="text-unum-slate group-hover:text-unum-blue transition-colors" />
+              <HelpCircle size={18} className="text-brand-grey group-hover:text-brand-blue transition-colors" />
               <span className="hidden sm:inline">Ajuda</span>
             </button>
           )}
           {toolName && (
             <>
               <div className="h-6 w-px bg-gray-200 hidden sm:block" />
-              <span className="hidden md:inline text-xs font-bold text-unum-gray uppercase tracking-widest border-b-2 border-unum-blue pb-1">
+              <span className="hidden md:inline text-xs font-bold text-brand-grey uppercase tracking-widest border-b-2 border-brand-blue pb-1">
                 {toolName}
               </span>
             </>

@@ -33,7 +33,7 @@ export function CurrencyInput({
       {label && (
         <label 
           htmlFor={id}
-          className={`block text-[10px] font-black text-unum-gray uppercase tracking-widest mb-2 ${labelClassName}`}
+          className={`block text-[10px] font-black text-brand-grey uppercase tracking-widest mb-2 ${labelClassName}`}
         >
           {label}
         </label>
@@ -55,7 +55,7 @@ export function CurrencyInput({
           decimalScale={2}
           fixedDecimalScale
           placeholder={placeholder}
-          className={`w-full ${prefix ? 'pl-9' : 'px-4'} pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-unum-blue focus:ring-2 focus:ring-unum-blue/10 focus:border-unum-blue outline-none transition-all ${className}`}
+          className={`w-full ${prefix ? 'pl-9' : 'px-4'} pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-bold text-brand-blue focus:ring-2 focus:ring-brand-blue/10 focus:border-brand-blue outline-none transition-all ${className}`}
         />
         {icon && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">

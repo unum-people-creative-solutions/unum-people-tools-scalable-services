@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --unum-blue: #015294;
-  --unum-slate: #5E88A1;
-  --unum-gray: #727A80;
-  --unum-sky: #00A6D7;
-  --unum-lawn: #8DC24B;
-  --unum-orange: #EB9400;
+  --brand-blue: #0047FF;
+  --brand-purple: #8F00FF;
+  --brand-orange: #FF5C00;
+  --brand-dark: #14142B;
+  --brand-grey: #6E7191;
+  --brand-white: #FFFFFF;
 }
 
 body {
-  color: #1a1a1a;
-  background: #fdfdfd;
+  color: var(--brand-dark);
+  background: var(--brand-white);
 }
 
 @theme {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-poppins);
   
-  --color-unum-blue: #015294;
-  --color-unum-slate: #5E88A1;
-  --color-unum-gray: #727A80;
-  --color-unum-sky: #00A6D7;
-  --color-unum-lawn: #8DC24B;
-  --color-unum-orange: #EB9400;
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-grey: var(--brand-grey);
+  --color-brand-white: var(--brand-white);
 
   @keyframes slide-in-right {
     from { transform: translateX(100%); }

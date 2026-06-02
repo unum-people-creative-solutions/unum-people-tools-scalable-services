@@ -40,17 +40,11 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 // Mock ResizeObserver
-class ResizeObserverMock {
+window.ResizeObserver = class ResizeObserver {
   observe = vi.fn();
   unobserve = vi.fn();
   disconnect = vi.fn();
-}
-
-Object.defineProperty(window, 'ResizeObserver', {
-  writable: true,
-  configurable: true,
-  value: vi.fn().mockImplementation(() => new ResizeObserverMock()),
-});
+};
 
 // Mock scrollTo
 Element.prototype.scrollTo = vi.fn();

@@ -37,7 +37,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({
       
       try {
         if (typeof window !== 'undefined') {
-          const adsbygoogle = (window as any).adsbygoogle || [];
+          const adsbygoogle = window.adsbygoogle || [];
           adsbygoogle.push({});
           adRef.current = true;
         }

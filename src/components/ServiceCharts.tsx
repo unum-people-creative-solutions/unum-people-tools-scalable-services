@@ -103,9 +103,9 @@ export function ServiceCharts({ services, highlightedId }: ServiceChartsProps) {
               <span className="font-bold text-gray-700">{y.toFixed(0)}%</span>
             </p>
           </div>
-          <div className="bg-blue-50 px-2 py-1 rounded">
-            <p className="text-[9px] text-blue-600 font-black uppercase">Quadrante:</p>
-            <p className="text-xs font-bold text-blue-800">{quadrant}</p>
+          <div className="bg-brand-blue/10 px-2 py-1 rounded">
+            <p className="text-[9px] text-brand-blue font-black uppercase">Quadrante:</p>
+            <p className="text-xs font-bold text-brand-dark">{quadrant}</p>
           </div>
         </div>
       );
@@ -131,7 +131,7 @@ export function ServiceCharts({ services, highlightedId }: ServiceChartsProps) {
           onMouseLeave={() => setHoveredInfo(null)}
         >
           <h3 className="text-sm font-bold text-gray-600 uppercase tracking-wider">{info.title}</h3>
-          <Info size={14} className="text-gray-400 group-hover:text-blue-500 transition-colors" />
+          <Info size={14} className="text-gray-400 group-hover:text-brand-blue transition-colors" />
         </div>
 
         {/* Info Overlay */}
@@ -141,7 +141,7 @@ export function ServiceCharts({ services, highlightedId }: ServiceChartsProps) {
             <div className="grid grid-cols-2 gap-2 border-t border-white/10 pt-3">
               {info.quadrantList.map((q, i) => (
                 <div key={i}>
-                  <p className="text-[10px] font-bold text-blue-400">{q.name}</p>
+                  <p className="text-[10px] font-bold text-brand-blue/60">{q.name}</p>
                   <p className="text-[9px] text-gray-400 leading-tight">{q.desc}</p>
                 </div>
               ))}

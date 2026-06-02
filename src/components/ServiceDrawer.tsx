@@ -105,7 +105,7 @@ export function ServiceDrawer({ isOpen, onClose, onSave }: ServiceDrawerProps) {
                   className={cn(
                     'w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors',
                     currentStep === idx
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-brand-blue text-white'
                       : currentStep > idx
                       ? 'bg-green-500 text-white'
                       : 'bg-gray-200 text-gray-500'
@@ -143,7 +143,7 @@ export function ServiceDrawer({ isOpen, onClose, onSave }: ServiceDrawerProps) {
                       className={cn(
                         'flex-1 py-2 rounded-lg text-xs font-bold transition-all border',
                         answers[q.id] === true
-                          ? 'bg-blue-600 border-blue-600 text-white shadow-md'
+                          ? 'bg-brand-blue border-brand-blue text-white shadow-md'
                           : 'bg-white border-gray-200 text-gray-400 hover:border-gray-300 hover:text-gray-600'
                       )}
                     >
@@ -184,13 +184,13 @@ export function ServiceDrawer({ isOpen, onClose, onSave }: ServiceDrawerProps) {
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
                   placeholder="Ex: Consultoria Técnica"
-                  className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                  className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition-all"
                 />
               </div>
 
-              <div className="p-4 bg-blue-50 rounded-lg">
-                <h4 className="text-sm font-bold text-blue-800 mb-2">Resumo da Pontuação:</h4>
-                <div className="grid grid-cols-2 gap-2 text-xs text-blue-700">
+              <div className="p-4 bg-brand-blue/5 rounded-lg">
+                <h4 className="text-sm font-bold text-brand-blue mb-2">Resumo da Pontuação:</h4>
+                <div className="grid grid-cols-2 gap-2 text-xs text-brand-grey">
                   <p>Esforço: {calculateScore('esforco').toFixed(0)}%</p>
                   <p>Complexidade: {calculateScore('complexidade').toFixed(0)}%</p>
                   <p>Padronização: {calculateScore('padronizacao').toFixed(0)}%</p>
@@ -214,7 +214,7 @@ export function ServiceDrawer({ isOpen, onClose, onSave }: ServiceDrawerProps) {
           {!isFinalStep ? (
             <button
               onClick={handleNext}
-              className="flex-[2] flex items-center justify-center gap-2 p-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all font-medium"
+              className="flex-[2] flex items-center justify-center gap-2 p-3 rounded-lg bg-brand-blue text-white hover:bg-opacity-90 transition-all font-medium"
             >
               Próximo <ChevronRight size={18} />
             </button>
