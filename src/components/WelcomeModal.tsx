@@ -40,10 +40,10 @@ export function WelcomeModal({
   const displayIcon = icon || <BarChart3 size={24} />;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-unum-blue/40 backdrop-blur-md animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-blue/40 backdrop-blur-md animate-in fade-in duration-300">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in duration-300">
         {/* Header */}
-        <div className="bg-unum-blue p-8 text-white relative">
+        <div className="bg-brand-blue p-8 text-white relative">
           <button 
             onClick={onClose}
             className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
@@ -57,7 +57,7 @@ export function WelcomeModal({
             </div>
             <h2 className="text-2xl font-black uppercase tracking-tighter">{title}</h2>
           </div>
-          <p className="text-blue-100 text-sm leading-relaxed max-w-xl font-medium">
+          <p className="text-white/70 text-sm leading-relaxed max-w-xl font-medium">
             {description || defaultDescription}
           </p>
         </div>
@@ -69,7 +69,7 @@ export function WelcomeModal({
           ) : (
             <>
               <section>
-                <h3 className="text-unum-blue font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
+                <h3 className="text-brand-blue font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
                   <LayoutGrid size={16} /> As Matrizes de Análise
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -89,18 +89,18 @@ export function WelcomeModal({
               </section>
 
               <section className="space-y-4">
-                <h3 className="text-unum-blue font-black uppercase text-xs tracking-widest flex items-center gap-2">
+                <h3 className="text-brand-blue font-black uppercase text-xs tracking-widest flex items-center gap-2">
                   <Target size={16} /> O Score de Atratividade
                 </h3>
-                <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-                  <p className="text-sm text-blue-900 leading-relaxed">
+                <div className="p-4 bg-brand-blue/5 rounded-xl border border-brand-blue/10">
+  <p className="text-sm text-brand-dark leading-relaxed">
                     Nosso algoritmo cruza as duas matrizes. Quanto maior o score, maior a facilidade de escala com a melhor margem possível. Use o ranking para priorizar seus esforços de venda e marketing.
                   </p>
                 </div>
               </section>
 
               <div className="flex gap-3 items-start">
-                <Info className="text-unum-blue shrink-0 mt-0.5" size={20} />
+                <Info className="text-brand-blue shrink-0 mt-0.5" size={20} />
                 <div className="space-y-2">
                   <p className="text-xs text-gray-600">
                     <strong>Microinteração:</strong> Passe o mouse sobre os itens da lista para destacar o posicionamento exato dele nos gráficos acima.
@@ -118,7 +118,7 @@ export function WelcomeModal({
         <div className="p-6 border-t bg-gray-50">
           <button 
             onClick={onClose}
-            className="w-full bg-unum-blue hover:bg-unum-slate text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg shadow-unum-blue/20 transition-all active:scale-[0.98]"
+            className="w-full bg-brand-blue hover:bg-brand-grey text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg shadow-brand-blue/20 transition-all active:scale-[0.98]"
           >
             Entendi, Prosseguir
           </button>

@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { CookieBanner } from '../components/CookieBanner';
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['400', '700'],
+  variable: '--font-poppins',
 });
 
 export const metadata: Metadata = {
@@ -76,12 +78,13 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7103356380607005"
           crossOrigin="anonymous"
         />
-        <script
+      </head>
+      <body className={`${poppins.variable} font-sans antialiased bg-brand-white`} suppressHydrationWarning>
+        <Script
+          id="json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      </head>
-      <body className={`${inter.variable} font-sans antialiased bg-gray-50`}>
         {children}
         <CookieBanner />
       </body>

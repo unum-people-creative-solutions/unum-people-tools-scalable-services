@@ -27,7 +27,7 @@ export function ServiceList({ services, onRemove, onHover, onAddClick }: Service
 
   const getScoreColor = (score: number) => {
     if (score >= 70) return 'text-green-700 bg-green-50 border-green-100';
-    if (score >= 40) return 'text-blue-700 bg-blue-50 border-blue-100';
+    if (score >= 40) return 'text-brand-blue bg-brand-blue/10 border-brand-blue/20';
     return 'text-red-700 bg-red-50 border-red-100';
   };
 
@@ -35,23 +35,23 @@ export function ServiceList({ services, onRemove, onHover, onAddClick }: Service
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       <div className="p-4 sm:p-6 border-b flex flex-col sm:flex-row justify-between sm:items-center gap-4 bg-gray-50/50">
         <div>
-          <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-            <Target className="text-blue-600" size={20} />
+          <h2 className="text-lg font-bold text-brand-dark flex items-center gap-2">
+            <Target className="text-brand-blue" size={20} />
             Ranking de Atratividade
           </h2>
-          <p className="text-sm text-gray-500">Serviços ordenados pelo potencial estratégico</p>
+          <p className="text-sm text-brand-grey">Serviços ordenados pelo potencial estratégico</p>
         </div>
         <div className="flex gap-2 sm:gap-3">
           <button
             onClick={() => exportToCSV(services)}
             disabled={services.length === 0}
-            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-sm font-medium text-brand-grey bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <FileDown size={18} /> <span className="sm:inline">Exportar</span>
           </button>
           <button
             onClick={onAddClick}
-            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-sm font-medium text-white bg-brand-blue rounded-lg hover:bg-opacity-90 transition-all shadow-lg shadow-brand-blue/20"
           >
             <Plus size={18} /> <span className="sm:inline">Novo</span>
           </button>
@@ -90,7 +90,7 @@ export function ServiceList({ services, onRemove, onHover, onAddClick }: Service
                       key={service.id}
                       onMouseEnter={() => onHover(service.id)}
                       onMouseLeave={() => onHover(null)}
-                      className="hover:bg-blue-50/30 transition-colors group"
+                      className="hover:bg-brand-blue/5 transition-colors group"
                     >
                       <td className="px-6 py-4">
                         <span className="font-bold text-gray-900 block">{service.nome}</span>

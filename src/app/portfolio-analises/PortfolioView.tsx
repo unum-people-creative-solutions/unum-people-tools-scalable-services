@@ -34,8 +34,8 @@ export default function PortfolioView() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="animate-pulse flex flex-col items-center">
-          <div className="w-12 h-12 bg-unum-blue/20 rounded-full mb-4"></div>
-          <p className="text-unum-gray font-medium">Carregando portfólio...</p>
+          <div className="w-12 h-12 bg-brand-blue/20 rounded-full mb-4"></div>
+          <p className="text-brand-grey font-medium">Carregando portfólio...</p>
         </div>
       </div>
     );
@@ -54,19 +54,19 @@ export default function PortfolioView() {
           <header className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <LayoutGrid className="text-unum-blue" size={20} />
-                <h1 className="text-xl font-black text-unum-blue uppercase tracking-tighter">
+                <LayoutGrid className="text-brand-blue" size={20} />
+                <h1 className="text-xl font-black text-brand-blue uppercase tracking-tighter">
                   Mapeamento Estratégico
                 </h1>
               </div>
-              <p className="text-unum-gray text-xs font-bold uppercase tracking-widest opacity-70">
+              <p className="text-brand-grey text-xs font-bold uppercase tracking-widest opacity-70">
                 Análise de Escalabilidade e Rentabilidade
               </p>
             </div>
             
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="bg-unum-blue hover:bg-unum-slate text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg shadow-unum-blue/20 flex items-center justify-center gap-2 active:scale-95 text-xs uppercase tracking-widest"
+              className="bg-brand-blue hover:bg-brand-grey text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg shadow-brand-blue/20 flex items-center justify-center gap-2 active:scale-95 text-xs uppercase tracking-widest"
             >
               Novo Serviço
             </button>
@@ -86,16 +86,16 @@ export default function PortfolioView() {
             />
           </section>
 
-          <div className="bg-white border-2 border-unum-blue/10 p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-blue-50 mt-12 mb-6">
+          <div className="bg-white border-2 border-brand-blue/10 p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-brand-blue/5 mt-12 mb-6">
             <div className="space-y-2 text-center md:text-left">
-              <h4 className="text-xl font-bold text-unum-blue">Pronto para escalar sua operação?</h4>
-              <p className="text-gray-500 text-sm">O Unum People ajuda você a organizar seus serviços e focar no que traz mais lucro.</p>
+              <h4 className="text-xl font-bold text-brand-blue">Priorize o que realmente traz resultado.</h4>
+              <p className="text-gray-500 text-sm">O Unum People ajuda você a organizar seus serviços e focar na rentabilidade real da sua operação.</p>
             </div>
             <a 
               href="https://unumpeople.com.br" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-unum-blue text-white font-black rounded-xl hover:bg-opacity-90 hover:scale-105 transition-all whitespace-nowrap shadow-lg shadow-blue-200 inline-block text-center"
+              className="px-8 py-4 bg-brand-blue text-white font-black rounded-xl hover:bg-opacity-90 hover:scale-105 transition-all whitespace-nowrap shadow-lg shadow-brand-blue/20 inline-block text-center"
             >
               CONHECER UNUM PEOPLE
             </a>

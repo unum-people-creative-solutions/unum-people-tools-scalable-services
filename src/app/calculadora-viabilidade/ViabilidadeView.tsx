@@ -53,6 +53,16 @@ export default function ViabilidadeView() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   const [isXrayOpen, setIsXrayOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const formatCurrency = (value: number | undefined) => {
+    if (!mounted || value === undefined) return '...';
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  };
 
   const handleValueChange = (name: keyof FormData, values: { floatValue?: number }) => {
     setFormData(prev => ({ ...prev, [name]: values.floatValue || 0 }));
@@ -120,7 +130,7 @@ export default function ViabilidadeView() {
   const renderHelpContent = () => (
     <div className="space-y-8">
       <section>
-        <h3 className="text-unum-blue font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
+        <h3 className="text-brand-blue font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
           <Zap size={16} /> Como funciona a ferramenta
         </h3>
         <p className="text-sm text-gray-600 leading-relaxed mb-4">
@@ -143,7 +153,7 @@ export default function ViabilidadeView() {
       </section>
 
       <section>
-        <h3 className="text-unum-blue font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
+        <h3 className="text-brand-blue font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
           <PieChart size={16} /> Glossário de Métricas
         </h3>
         <div className="space-y-4">
@@ -156,18 +166,18 @@ export default function ViabilidadeView() {
             { term: 'Ponto de Equilíbrio', desc: 'O momento em que o lucro gerado pelas vendas iguala o custo do investimento, ou seja, você não tem prejuízo.' },
           ].map((item, idx) => (
             <div key={idx} className="grid grid-cols-[160px_1fr] gap-4 text-sm items-start">
-              <span className="font-bold text-unum-blue leading-tight">{item.term}:</span>
+              <span className="font-bold text-brand-blue leading-tight">{item.term}:</span>
               <span className="text-gray-600 leading-tight">{item.desc}</span>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-        <h3 className="text-unum-blue font-black uppercase text-xs tracking-widest mb-2 flex items-center gap-2">
+      <section className="p-4 bg-brand-blue/10 rounded-xl border border-brand-blue/20">
+        <h3 className="text-brand-blue font-black uppercase text-xs tracking-widest mb-2 flex items-center gap-2">
           <Target size={16} /> Planejamento Estratégico
         </h3>
-        <p className="text-sm text-blue-900 leading-relaxed italic">
+        <p className="text-sm text-brand-dark leading-relaxed italic">
           Utilize esta ferramenta para definir orçamentos de marketing realistas. Se a calculadora indicar que você precisa de uma taxa de fechamento comercial de 80% para empatar a conta, talvez seja necessário ajustar o preço de venda ou otimizar seus custos antes de iniciar a campanha.
         </p>
       </section>
@@ -177,7 +187,7 @@ export default function ViabilidadeView() {
   const renderStep1 = () => (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-2">
-        <h2 className="text-2xl md:text-3xl font-black text-unum-blue tracking-tighter">
+        <h2 className="text-2xl md:text-3xl font-black text-brand-blue tracking-tighter">
           O QUE VOCÊ DESEJA DESCOBRIR?
         </h2>
         <p className="text-gray-500">Escolha o caminho para iniciar sua simulação</p>
@@ -189,16 +199,16 @@ export default function ViabilidadeView() {
             setScenario('BUDGET_TO_EFFORT');
             setStep('FILL_FORM');
           }}
-          className="group p-8 bg-white border-2 border-gray-100 rounded-2xl text-left hover:border-unum-blue hover:shadow-xl transition-all duration-300"
+          className="group p-8 bg-white border-2 border-gray-100 rounded-2xl text-left hover:border-brand-blue hover:shadow-xl transition-all duration-300"
         >
-          <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <DollarSign className="text-unum-blue" size={28} />
+          <div className="w-14 h-14 bg-brand-blue/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <DollarSign className="text-brand-blue" size={28} />
           </div>
           <h3 className="text-xl font-bold text-gray-800 mb-2">Tenho um orçamento</h3>
           <p className="text-gray-500 leading-relaxed">
             Quero saber qual o esforço de vendas necessário para ter retorno com este investimento.
           </p>
-          <div className="mt-6 flex items-center text-unum-blue font-bold text-sm">
+          <div className="mt-6 flex items-center text-brand-blue font-bold text-sm">
             COMEÇAR <ChevronRight size={16} className="ml-1" />
           </div>
         </button>
@@ -208,7 +218,7 @@ export default function ViabilidadeView() {
             setScenario('GOAL_TO_INVESTMENT');
             setStep('FILL_FORM');
           }}
-          className="group p-8 bg-white border-2 border-gray-100 rounded-2xl text-left hover:border-unum-blue hover:shadow-xl transition-all duration-300"
+          className="group p-8 bg-white border-2 border-gray-100 rounded-2xl text-left hover:border-brand-blue hover:shadow-xl transition-all duration-300"
         >
           <div className="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <Users className="text-green-600" size={28} />
@@ -282,7 +292,7 @@ export default function ViabilidadeView() {
               prefix="R$ "
               decimalScale={2}
               fixedDecimalScale
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-unum-blue focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all"
               placeholder="R$ 0,00"
             />
           </div>
@@ -310,7 +320,7 @@ export default function ViabilidadeView() {
               prefix="R$ "
               decimalScale={2}
               fixedDecimalScale
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-unum-blue focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all"
               placeholder="R$ 0,00"
             />
           </div>
@@ -336,7 +346,7 @@ export default function ViabilidadeView() {
                 value={formData.taxaConversaoLP || ''}
                 onValueChange={(values) => handleValueChange('taxaConversaoLP', values)}
                 suffix=""
-                className="w-full pl-4 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-unum-blue focus:border-transparent outline-none transition-all"
+                className="w-full pl-4 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all"
                 placeholder="0"
               />
             </div>
@@ -366,7 +376,7 @@ export default function ViabilidadeView() {
                 prefix="R$ "
                 decimalScale={2}
                 fixedDecimalScale
-                className="w-full px-4 py-3 bg-blue-50/50 border border-blue-100 rounded-xl focus:ring-2 focus:ring-unum-blue focus:border-transparent outline-none transition-all font-bold text-unum-blue"
+                className="w-full px-4 py-3 bg-brand-blue/5 border border-brand-blue/20 rounded-xl focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all font-bold text-brand-blue"
                 placeholder="R$ 0,00"
               />
             </div>
@@ -430,7 +440,7 @@ export default function ViabilidadeView() {
             setIsXrayOpen(false);
           }}
           disabled={!formData.ticketMedio || !formData.cpc || !formData.taxaConversaoLP}
-          className="w-full py-4 bg-unum-blue text-white rounded-xl font-black uppercase tracking-widest hover:bg-opacity-90 transition-all shadow-lg shadow-blue-200 disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
+          className="w-full py-4 bg-brand-blue text-white rounded-xl font-black uppercase tracking-widest hover:bg-opacity-90 transition-all shadow-lg shadow-brand-blue/20 disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
         >
           Gerar Diagnóstico
         </button>
@@ -455,8 +465,8 @@ export default function ViabilidadeView() {
     );
 
     const formattedOrcamento = scenario === 'BUDGET_TO_EFFORT' 
-      ? results.orcamento?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-      : parseFloat(results.orcamentoNecessario!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      ? formatCurrency(results.orcamento)
+      : formatCurrency(parseFloat(results.orcamentoNecessario!));
 
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10">
@@ -475,14 +485,14 @@ export default function ViabilidadeView() {
         }`}>
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <div className={`p-3 rounded-2xl ${results.inviavel ? 'bg-red-100 text-red-600' : 'bg-blue-50 text-unum-blue'}`}>
+              <div className={`p-3 rounded-2xl ${results.inviavel ? 'bg-red-100 text-red-600' : 'bg-brand-blue/10 text-brand-blue'}`}>
                 {results.inviavel ? <AlertCircle size={32} /> : <TrendingUp size={32} />}
               </div>
               <div className="space-y-4">
                 <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                   {scenario === 'BUDGET_TO_EFFORT' ? (
                     <>
-                      Para cobrir o seu investimento de <span className="font-bold text-unum-blue">{formattedOrcamento}</span>, 
+                      Para cobrir o seu investimento de <span className="font-bold text-brand-blue">{formattedOrcamento}</span>, 
                       sua campanha vai gerar cerca de <span className="font-bold">{results.leads} oportunidades</span> (leads).
                       <br /><br />
                       O seu único esforço será transformar <span className="font-bold">{results.vendasPE} dessas oportunidades</span> em clientes reais. 
@@ -491,19 +501,19 @@ export default function ViabilidadeView() {
                   ) : (
                     <>
                       Para alcançar a sua meta de <span className="font-bold text-green-600">{results.clientesMeta} novos clientes</span>, 
-                      você precisará investir cerca de <span className="font-bold text-unum-blue">{formattedOrcamento}</span> na sua campanha.
+                      você precisará investir cerca de <span className="font-bold text-brand-blue">{formattedOrcamento}</span> na sua campanha.
                       <br /><br />
                       Com esse valor, seus anúncios vão atrair aproximadamente <span className="font-bold">{results.leads} oportunidades (leads)</span>. 
-                      Na prática, isso significa que você estará pagando <span className="font-bold text-unum-blue">{parseFloat(results.cac!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> para conquistar cada novo cliente (este é o seu custo de aquisição).
+                      Na prática, isso significa que você estará pagando <span className="font-bold text-brand-blue">{formatCurrency(parseFloat(results.cac!))}</span> para conquistar cada novo cliente (este é o seu custo de aquisição).
                     </>
                   )}
                 </p>
                 
                 {scenario === 'GOAL_TO_INVESTMENT' && (
-                  <div className="flex items-start gap-2 p-4 bg-blue-50 rounded-2xl border border-blue-100 text-blue-800 text-sm">
-                    <Lightbulb className="text-blue-500 shrink-0" size={18} />
+                  <div className="flex items-start gap-2 p-4 bg-brand-blue/10 rounded-2xl border border-brand-blue/20 text-brand-dark text-sm">
+                    <Lightbulb className="text-brand-blue" size={18} />
                     <p>
-                      <span className="font-bold">Dica de Ouro:</span> Para essa campanha valer a pena, o seu lucro livre a cada venda precisa ser maior do que esses <span className="font-bold">{parseFloat(results.cac!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>!
+                      <span className="font-bold">Dica de Ouro:</span> Para essa campanha valer a pena, o seu lucro livre a cada venda precisa ser maior do que esses <span className="font-bold">{formatCurrency(parseFloat(results.cac!))}</span>!
                     </p>
                   </div>
                 )}
@@ -523,7 +533,7 @@ export default function ViabilidadeView() {
                 className="w-full flex items-center justify-between p-4 bg-gray-50/50 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center gap-3 text-sm font-bold text-gray-600">
-                  <Calculator size={18} className="text-unum-blue" />
+                  <Calculator size={18} className="text-brand-blue" />
                   {scenario === 'BUDGET_TO_EFFORT' ? 'Ver Raio-X do Lucro' : 'Ver Raio-X do Investimento'}
                 </div>
                 <ChevronDown size={18} className={`text-gray-400 transition-transform ${isXrayOpen ? 'rotate-180' : ''}`} />
@@ -536,23 +546,23 @@ export default function ViabilidadeView() {
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-500">Preço de Venda (Ticket Médio)</span>
                         <span className="font-bold text-gray-700">
-                          {results.ticketMedio?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                          {formatCurrency(results.ticketMedio)}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-500">Custo da Operação (Variável)</span>
                         <span className="font-bold text-red-500">
-                          - {results.custoVariavel?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                          - {formatCurrency(results.custoVariavel)}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm pt-2 border-t border-gray-200">
                         <span className="text-gray-700 font-bold">Lucro Real por Venda</span>
                         <span className="font-black text-green-600">
-                          = {results.margemContribuicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                          = {formatCurrency(results.margemContribuicao)}
                         </span>
                       </div>
                       <div className="mt-4 p-3 bg-white/50 rounded-xl text-[11px] text-gray-500 leading-relaxed italic">
-                        <span className="font-bold text-gray-600">A Conta Final:</span> {formattedOrcamento} (Seu Orçamento) ÷ {results.margemContribuicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} (Seu Lucro Real) = <span className="font-bold text-unum-blue">{results.vendasPE}</span> Vendas Necessárias
+                        <span className="font-bold text-gray-600">A Conta Final:</span> {formattedOrcamento} (Seu Orçamento) ÷ {formatCurrency(results.margemContribuicao)} (Seu Lucro Real) = <span className="font-bold text-brand-blue">{results.vendasPE}</span> Vendas Necessárias
                       </div>
                     </>
                   ) : (
@@ -574,7 +584,7 @@ export default function ViabilidadeView() {
                         </span>
                       </div>
                       <div className="mt-4 p-3 bg-white/50 rounded-xl text-[11px] text-gray-500 leading-relaxed italic border-t border-gray-200">
-                        <span className="font-bold text-gray-600">A Conta Final:</span> {results.visitantes} Cliques x {results.cpc?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} (Custo por Clique) = <span className="font-bold text-unum-blue">{formattedOrcamento}</span> de Investimento
+                        <span className="font-bold text-gray-600">A Conta Final:</span> {results.visitantes} Cliques x {formatCurrency(results.cpc)} (Custo por Clique) = <span className="font-bold text-brand-blue">{formattedOrcamento}</span> de Investimento
                       </div>
                     </>
                   )}
@@ -603,16 +613,16 @@ export default function ViabilidadeView() {
           </div>
         </div>
 
-        <div className="bg-white border-2 border-unum-blue/10 p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-blue-50">
+        <div className="bg-white border-2 border-brand-blue/10 p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-brand-blue/5">
           <div className="space-y-2 text-center md:text-left">
-            <h4 className="text-xl font-bold text-unum-blue">Pronto para gerenciar esses leads?</h4>
-            <p className="text-gray-500 text-sm">Aumente sua taxa de fechamento gerenciando seus leads no Unum People CRM.</p>
+            <h4 className="text-xl font-bold text-brand-blue">Transforme seus anúncios em clientes reais.</h4>
+            <p className="text-gray-500 text-sm">Elimine a fricção entre o investimento em marketing e o fechamento da venda com o Unum People CRM.</p>
           </div>
           <a 
             href="https://unumpeople.com.br" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="px-8 py-4 bg-unum-blue text-white font-black rounded-xl hover:bg-opacity-90 hover:scale-105 transition-all whitespace-nowrap shadow-lg shadow-blue-200 inline-block text-center"
+            className="px-8 py-4 bg-brand-blue text-white font-black rounded-xl hover:bg-opacity-90 hover:scale-105 transition-all whitespace-nowrap shadow-lg shadow-brand-blue/20 inline-block text-center"
           >
             CONHECER UNUM PEOPLE CRM
           </a>
@@ -644,12 +654,12 @@ export default function ViabilidadeView() {
           <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <BarChart3 className="text-unum-blue" size={20} />
-                <h1 className="text-xl font-black text-unum-blue uppercase tracking-tighter">
+                <BarChart3 className="text-brand-blue" size={20} />
+                <h1 className="text-xl font-black text-brand-blue uppercase tracking-tighter">
                   Viabilidade de Campanha
                 </h1>
               </div>
-              <p className="text-unum-gray text-xs font-bold uppercase tracking-widest opacity-70">
+              <p className="text-brand-grey text-xs font-bold uppercase tracking-widest opacity-70">
                 Projeção de ROI e CAC
               </p>
             </div>
@@ -662,7 +672,7 @@ export default function ViabilidadeView() {
                     (s === 1 && step === 'CHOOSE_PATH') || 
                     (s === 2 && step === 'FILL_FORM') || 
                     (s === 3 && step === 'DIAGNOSIS')
-                      ? 'bg-unum-blue w-12' 
+                      ? 'bg-brand-blue w-12' 
                       : 'bg-gray-200'
                   }`}
                 />
