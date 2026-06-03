@@ -55,7 +55,7 @@ export default function PortfolioView() {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <LayoutGrid className="text-brand-blue" size={20} />
-                <h1 className="text-xl font-black text-brand-blue uppercase tracking-tighter">
+                <h1 className="text-xl font-black brand-gradient-text uppercase tracking-tighter">
                   Mapeamento Estratégico
                 </h1>
               </div>
@@ -66,7 +66,7 @@ export default function PortfolioView() {
             
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="bg-brand-blue hover:bg-brand-grey text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg shadow-brand-blue/20 flex items-center justify-center gap-2 active:scale-95 text-xs uppercase tracking-widest"
+              className="brand-gradient hover:opacity-90 text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg shadow-brand-blue/20 flex items-center justify-center gap-2 active:scale-95 text-xs uppercase tracking-widest"
             >
               Novo Serviço
             </button>

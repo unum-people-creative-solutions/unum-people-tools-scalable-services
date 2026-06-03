@@ -150,7 +150,7 @@ export default function PrecificacaoView() {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <Calculator className="text-brand-blue" size={20} />
-                <h1 className="text-xl font-black text-brand-blue uppercase tracking-tighter">
+                <h1 className="text-xl font-black brand-gradient-text uppercase tracking-tighter">
                   Precificação e Margem
                 </h1>
               </div>

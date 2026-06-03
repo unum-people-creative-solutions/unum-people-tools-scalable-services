@@ -43,7 +43,7 @@ export function WelcomeModal({
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-blue/40 backdrop-blur-md animate-in fade-in duration-300">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in duration-300">
         {/* Header */}
-        <div className="bg-brand-blue p-8 text-white relative">
+        <div className="brand-gradient p-8 text-white relative">
           <button 
             onClick={onClose}
             className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
