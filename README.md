@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Unum People - Ferramentas de Inteligência Estratégica
 
-## Getting Started
+O ecossistema de ferramentas da **Unum People** foi projetado para eliminar o "achismo" da gestão de serviços e marketing, fornecendo dados precisos sobre rentabilidade, precificação e viabilidade de campanhas.
 
-First, run the development server:
+## 🚀 Ferramentas Disponíveis
+
+### 1. Mapeamento Estratégico (Portfólio)
+- **O que faz:** Analisa seu portfólio de serviços sob a ótica de escalabilidade e lucratividade.
+- **Destaque:** Matrizes de Operação e Decisão para identificar quais serviços priorizar ou otimizar.
+- **Caminho:** `/portfolio-analises`
+
+### 2. Simulador de Precificação
+- **O que faz:** Calcula o preço ideal de venda baseado nos seus custos fixos reais, capacidade produtiva e impostos.
+- **Destaque:** Identifica o "Piso Aceitável" (break-even) e a margem de lucro real de cada projeto.
+- **Caminho:** `/simulador-precificacao`
+
+### 3. Calculadora de Viabilidade de Campanhas
+- **O que faz:** Projeta o ROI e o CAC de campanhas de anúncios antes de você investir.
+- **Destaque:** Simula cenários baseados em orçamento disponível ou meta de clientes desejada.
+- **Caminho:** `/calculadora-viabilidade`
+
+## 🛠️ Stack Técnica
+
+- **Framework:** [Next.js](https://nextjs.org) (App Router)
+- **Linguagem:** TypeScript
+- **Estilização:** Tailwind CSS
+- **Ícones:** Lucide React
+- **Gráficos:** Recharts
+- **Testes:** Vitest + React Testing Library
+- **Monetização:** Google AdSense (Integração otimizada para visibilidade constante)
+
+## 📦 Desenvolvimento
+
+### Instalação
+
+```bash
+npm install
+```
+
+### Servidor de Desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build e Produção
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Qualidade e Testes
 
-## Learn More
+```bash
+npm run lint    # Verificação de padrões e tipos
+npm test        # Execução da suíte de testes unitários
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Identidade Visual
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O projeto utiliza a identidade visual da Unum People, baseada na fonte **Poppins** e uma paleta de cores estratégica:
+- **Brand Blue:** `#030066` (Profissionalismo e Confiança)
+- **Brand Orange:** `#FF4D00` (Ação e Energia)
+- **Brand Grey:** `#4D4D4D` (Sóbrio e Elegante)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+© 2026 Unum People Creative Solutions. Todos os direitos reservados.
