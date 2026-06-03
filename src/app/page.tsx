@@ -99,7 +99,7 @@ export default function Home() {
                   </Link>
                 ) : (
                   <span className="text-gray-400 font-bold text-sm uppercase tracking-widest cursor-not-allowed">
-                    Acesso Restrito
+                    Em Breve
                   </span>
                 )}
               </div>

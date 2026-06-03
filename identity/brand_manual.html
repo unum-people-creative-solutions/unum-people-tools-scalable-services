@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Marca | Unum People</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #14142b;
+            scroll-behavior: smooth;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #0A1C82, #FF3D00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .brand-gradient {
+            background: linear-gradient(135deg, #0A1C82 0%, #6B00D7 50%, #FF3D00 100%);
+        }
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-top: 30px;
+        }
+        .color-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+        .safe-zone {
+            border: 2px dashed #cbd5e1;
+            padding: 40px;
+            display: inline-block;
+            position: relative;
+        }
+        .safe-zone::after {
+            content: '2X';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 10px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header class="h-screen flex flex-col items-center justify-center text-center bg-white border-b border-gray-100">
+        <img src="logo.png" alt="Unum People Logo" class="w-64 mb-8">
+        <h1 class="text-5xl font-bold mb-4">Manual de Identidade Visual</h1>
+        <p class="text-xl text-gray-500 max-w-2xl">O caminho mais curto entre você e o seu cliente.</p>
+        <div class="mt-12 animate-bounce">
+            <a href="#proposito" class="text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Nav -->
+    <nav class="sticky top-0 bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-wrap justify-center md:justify-between items-center text-sm font-semibold tracking-wide uppercase gap-4">
+            <a href="#proposito" class="hover:text-blue-600 transition">Propósito</a>
+            <a href="#valores" class="hover:text-blue-600 transition">Valores</a>
+            <a href="#logotipo" class="hover:text-blue-600 transition">Logotipo</a>
+            <a href="#cores" class="hover:text-blue-600 transition">Cores</a>
+            <a href="#tipografia" class="hover:text-blue-600 transition">Tipografia</a>
+        </div>
+    </nav>
+
+    <!-- 01 Propósito -->
+    <section id="proposito">
+        <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">01. O Propósito</span>
+        <div class="grid md:grid-cols-2 gap-12 mt-6 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-6">Encurtar distâncias,<br>simplificar vendas.</h2>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    A <strong>Unum People</strong> desenvolve tecnologia para eliminar a fricção técnica do microempreendedor. Nosso ecossistema atua como a ponte invisível que conecta quem vende a quem compra, sem intermediários.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    Operamos no modelo People to People (P2P), garantindo que você esteja no comando do seu ecossistema de relacionamento comercial.
+                </p>
+            </div>
+            <div class="brand-gradient h-64 rounded-3xl flex items-center justify-center text-white p-8">
+                <p class="text-2xl font-light italic text-center text-white/90">"A tecnologia é a ponte invisível; a relação direta e o resultado prático são o foco."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 Valores da Marca -->
+    <section id="valores" class="bg-gray-50">
+        <div class="max-w-5xl mx-auto">
+            <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">02. Valores da Marca</span>
+            <h2 class="text-4xl font-bold mt-2 mb-10">Princípios Norteadores</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card mt-0 border border-gray-100 shadow-sm">
+                    <h3 class="text-xl font-bold mb-3 gradient-text">Unidade</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Atuar em convergência. Assim como as ferramentas operam em um único ecossistema indivisível, trabalhamos para que o empreendedor e seu cliente estejam alinhados, eliminando divisões.</p>
+                </div>
+                <div class="card mt-0 border border-gray-100 shadow-sm">
+                    <h3 class="text-xl font-bold mb-3 gradient-text">Conexão</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Estabelecer pontes legítimas. A tecnologia não é um fim isolado, mas o meio para criar vínculos autênticos, ligando propósitos e necessidades de forma direta e honesta.</p>
+                </div>
+                <div class="card mt-0 border border-gray-100 shadow-sm">
+                    <h3 class="text-xl font-bold mb-3 gradient-text">Relacionamento</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Priorizar as pessoas antes das transações. Negócios são sustentados pela confiança. O software existe para servir ao próximo e humanizar o contato comercial.</p>
+                </div>
+                <div class="card mt-0 border border-gray-100 shadow-sm">
+                    <h3 class="text-xl font-bold mb-3 gradient-text">Jornada</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Caminhar lado a lado. O crescimento é um processo contínuo que exige perseverança. Comprometemo-nos a acompanhar o empreendedor, respeitando seu tempo.</p>
+                </div>
+                <div class="card mt-0 border border-gray-100 shadow-sm">
+                    <h3 class="text-xl font-bold mb-3 gradient-text">Transformação</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Gerar frutos reais. O trabalho deve renovar a realidade à nossa volta. Buscamos gerar impacto positivo, permitindo que os negócios prosperem de forma justa e sustentável.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 Logotipo -->
+    <section id="logotipo">
+        <div class="max-w-5xl mx-auto">
+            <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">03. O Logotipo</span>
+            <h2 class="text-4xl font-bold mt-2 mb-10">Assinatura Visual</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="font-bold mb-4 border-b pb-2">Uso Principal</h3>
+                    <div class="flex justify-center py-10">
+                        <img src="logo.png" alt="Logo" class="w-48">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-4 italic text-center">Aplicação preferencial sobre fundos claros.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="font-bold mb-4 border-b pb-2">Área de Respiro</h3>
+                    <div class="flex justify-center py-10">
+                        <div class="safe-zone">
+                            <img src="logo.png" alt="Logo" class="w-32 opacity-50">
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-4 italic text-center">Margem mínima de 2X (onde X é a altura do 'U').</p>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <h3 class="text-xl font-bold mb-6">Elementos da Marca</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card mt-0 border border-gray-100 shadow-sm">
+                        <h4 class="font-bold mb-4 border-b pb-2 text-gray-600">Símbolo (Isotipo)</h4>
+                        <div class="flex justify-center py-8">
+                            <img src="logo_simbolo.png" alt="Símbolo Unum People" class="h-32">
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">Pode ser utilizado isoladamente em avatares (redes sociais), ícones de aplicativos e em reduções extremas onde o texto completo ficaria ilegível.</p>
+                    </div>
+                    <div class="card mt-0 border border-gray-100 shadow-sm">
+                        <h4 class="font-bold mb-4 border-b pb-2 text-gray-600">Tipografia (Logotipo)</h4>
+                        <div class="flex items-center justify-center py-8 h-full">
+                            <img src="logo_texto.png" alt="Texto Unum People" class="w-full max-w-[200px]">
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">Utilizado em aplicações limpas quando o símbolo já estiver fortemente presente em outro local da mesma peça visual ou layout.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <h3 class="text-xl font-bold mb-6">Versões Alternativas</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="p-8 bg-slate-900 rounded-xl">
+                        <p class="text-white/50 text-xs mb-4 uppercase font-bold">Versão Negativa</p>
+                        <div class="flex flex-col items-center">
+                             <img src="logo.png" alt="Logo" class="w-24 mb-2 grayscale brightness-200">
+                             <span class="text-white font-semibold text-sm">Unum People</span>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-white border border-gray-200 rounded-xl">
+                        <p class="text-gray-400 text-xs mb-4 uppercase font-bold">Monocromático</p>
+                        <div class="flex flex-col items-center">
+                             <img src="logo.png" alt="Logo" class="w-24 mb-2 grayscale contrast-200">
+                             <span class="text-gray-900 font-semibold text-sm">Unum People</span>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-blue-800 rounded-xl">
+                        <p class="text-white/50 text-xs mb-4 uppercase font-bold">Fundo Azul</p>
+                        <div class="flex flex-col items-center">
+                             <img src="logo.png" alt="Logo" class="w-24 mb-2 brightness-0 invert">
+                             <span class="text-white font-semibold text-sm">Unum People</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 Cores -->
+    <section id="cores" class="bg-gray-50">
+        <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">04. Paleta de Cores</span>
+        <h2 class="text-4xl font-bold mt-2 mb-10">Dinamismo Cromático</h2>
+        
+        <div class="card bg-white border border-gray-100 shadow-sm mt-0">
+            <h3 class="font-bold text-lg mb-6">Gradiente Institucional</h3>
+            <div class="h-24 w-full brand-gradient rounded-xl mb-4"></div>
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <span class="block font-bold text-[#0A1C82]">#0A1C82</span>
+                    <span class="text-xs text-gray-400 uppercase">Azul Profundo</span>
+                </div>
+                <div>
+                    <span class="block font-bold text-[#6B00D7]">#6B00D7</span>
+                    <span class="text-xs text-gray-400 uppercase">Roxo Transição</span>
+                </div>
+                <div>
+                    <span class="block font-bold text-[#FF3D00]">#FF3D00</span>
+                    <span class="text-xs text-gray-400 uppercase">Laranja Vibrante</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-10">
+            <div class="flex items-center gap-4 p-4 border border-gray-100 rounded-xl bg-white">
+                <div class="w-12 h-12 rounded bg-[#0A1C82]"></div>
+                <div>
+                    <p class="font-bold text-sm">Unum Dark Blue</p>
+                    <code class="text-xs text-gray-500">#0A1C82</code>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-gray-100 rounded-xl bg-white">
+                <div class="w-12 h-12 rounded bg-[#6E7191]"></div>
+                <div>
+                    <p class="font-bold text-sm">Support Grey</p>
+                    <code class="text-xs text-gray-500">#6E7191</code>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 p-4 border border-gray-100 rounded-xl bg-white">
+                <div class="w-12 h-12 rounded bg-[#FFFFFF] border border-gray-200"></div>
+                <div>
+                    <p class="font-bold text-sm">Absolute White</p>
+                    <code class="text-xs text-gray-500">#FFFFFF</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 Tipografia -->
+    <section id="tipografia">
+        <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">05. Tipografia</span>
+        <h2 class="text-4xl font-bold mt-2 mb-10">Voz e Escrita</h2>
+
+        <div class="card grid md:grid-cols-2 gap-12 mt-0">
+            <div>
+                <h3 class="text-3xl font-bold mb-4">Tipografia do Logotipo</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">A assinatura visual "Unum People" utiliza uma fonte display customizada. Suas hastes grossas e cantos arredondados (rounded) garantem uma percepção tecnológica, fluida e acessível. Esta fonte é de uso exclusivo para o logotipo.</p>
+                
+                <h3 class="text-3xl font-bold mb-4 mt-10">Poppins (Apoio)</h3>
+                <p class="text-gray-400 mb-6">Geométrica, moderna e amigável, utilizada para todos os textos da marca.</p>
+                <div class="space-y-2">
+                    <p class="font-bold text-2xl uppercase tracking-tighter italic opacity-20">Aa Bb Cc Dd Ee Ff Gg Hh</p>
+                    <p class="font-bold text-2xl uppercase tracking-tighter italic opacity-40">Aa Bb Cc Dd Ee Ff Gg Hh</p>
+                    <p class="font-bold text-2xl uppercase tracking-tighter italic opacity-60">Aa Bb Cc Dd Ee Ff Gg Hh</p>
+                    <p class="font-bold text-2xl uppercase tracking-tighter italic">Aa Bb Cc Dd Ee Ff Gg Hh</p>
+                </div>
+            </div>
+            <div class="space-y-8">
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">Títulos Principais</h4>
+                    <p class="text-3xl font-bold">Conectamos ideias e impulsionamos pessoas.</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">Corpo de Texto</h4>
+                    <p class="text-gray-600 leading-relaxed">Desenvolvemos soluções criativas e robustas que reduzem as barreiras digitais, promovendo uma interação mais humana e fluida entre todos os usuários.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-20 border-t border-gray-100 text-center">
+        <img src="logo_simbolo.png" alt="Símbolo Unum People" class="w-16 mx-auto mb-4 opacity-50 hover:opacity-100 transition-opacity duration-300">
+        <p class="text-gray-400 text-sm italic">© 2026 Unum People - Creative Solutions. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
