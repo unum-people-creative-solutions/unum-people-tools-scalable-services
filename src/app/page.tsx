@@ -6,7 +6,7 @@ import { AdUnit } from '../components/AdUnit';
 import { LayoutGrid, ArrowRight, BarChart3, Target, Calculator } from 'lucide-react';
 
 export const metadata = {
-  title: 'Home',
+  title: 'Tools | Unum People',
   description: 'Ferramentas inteligentes da Unum People para análise estratégica, ROI de campanhas e lucratividade de serviços.',
 };
 
@@ -53,7 +53,7 @@ export default function Home() {
       <main className="flex-1 p-4 md:p-8">
         <div className="max-w-7xl mx-auto py-12 md:py-20">
           <header className="mb-16 text-center">
-            <h1 className="text-4xl md:text-6xl font-black text-brand-blue uppercase tracking-tighter mb-6">
+            <h1 className="text-4xl md:text-6xl font-black brand-gradient-text uppercase tracking-tighter mb-6">
               Ecossistema de <br /> Inteligência Estratégica
             </h1>
             <p className="text-brand-grey text-lg md:text-xl max-w-2xl mx-auto font-medium">
@@ -69,7 +69,7 @@ export default function Home() {
                   tool.href !== '#' ? 'hover:shadow-xl hover:-translate-y-1' : 'opacity-75'
                 }`}
               >
-                <div className={`${tool.color} w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-brand-blue/10`}>
+                <div className={`brand-gradient w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-brand-blue/10`}>
                   <tool.icon size={32} />
                 </div>
                 
@@ -99,7 +99,7 @@ export default function Home() {
                   </Link>
                 ) : (
                   <span className="text-gray-400 font-bold text-sm uppercase tracking-widest cursor-not-allowed">
-                    Acesso Restrito
+                    Em Breve
                   </span>
                 )}
               </div>

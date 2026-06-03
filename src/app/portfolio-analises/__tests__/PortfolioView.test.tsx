@@ -12,7 +12,7 @@ vi.mock('../../components/Footer', () => ({
 
 // Mock crypto.randomUUID
 if (!global.crypto) {
-  (global as any).crypto = {
+  (global as unknown as { crypto: unknown }).crypto = {
     randomUUID: () => 'test-uuid-' + Math.random()
   };
 }

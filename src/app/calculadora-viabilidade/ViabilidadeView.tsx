@@ -56,6 +56,7 @@ export default function ViabilidadeView() {
   const [mounted, setMounted] = useState(false);
 
   React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -655,7 +656,7 @@ export default function ViabilidadeView() {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <BarChart3 className="text-brand-blue" size={20} />
-                <h1 className="text-xl font-black text-brand-blue uppercase tracking-tighter">
+                <h1 className="text-xl font-black brand-gradient-text uppercase tracking-tighter">
                   Viabilidade de Campanha
                 </h1>
               </div>
@@ -672,7 +673,7 @@ export default function ViabilidadeView() {
                     (s === 1 && step === 'CHOOSE_PATH') || 
                     (s === 2 && step === 'FILL_FORM') || 
                     (s === 3 && step === 'DIAGNOSIS')
-                      ? 'bg-brand-blue w-12' 
+                      ? 'brand-gradient w-12' 
                       : 'bg-gray-200'
                   }`}
                 />

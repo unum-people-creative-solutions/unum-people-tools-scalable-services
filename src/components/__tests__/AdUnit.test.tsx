@@ -3,19 +3,23 @@ import { AdUnit } from '../AdUnit';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 describe('AdUnit', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let resizeCallback: (entries: any[]) => void;
 
   beforeEach(() => {
     // Limpa o window.adsbygoogle antes de cada teste
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).adsbygoogle = [];
     vi.clearAllMocks();
 
     // Captura o callback do ResizeObserver
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     vi.spyOn(window, 'ResizeObserver').mockImplementation(function (this: any, callback: any) {
       resizeCallback = callback;
       this.observe = vi.fn();
       this.unobserve = vi.fn();
       this.disconnect = vi.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any);
   });
 
@@ -54,7 +58,7 @@ describe('AdUnit', () => {
     const originalEnv = process.env.NODE_ENV;
     process.env.NODE_ENV = 'development';
     
-    const pushSpy = vi.spyOn((window as any).adsbygoogle, 'push');
+    const pushSpy = vi.spyOn((window as unknown as { adsbygoogle: { push: () => void } }).adsbygoogle, 'push');
 
     render(<AdUnit slot="123456" />);
     expect(pushSpy).not.toHaveBeenCalled();
@@ -66,7 +70,7 @@ describe('AdUnit', () => {
     const originalEnv = process.env.NODE_ENV;
     process.env.NODE_ENV = 'production';
     
-    const pushSpy = vi.spyOn((window as any).adsbygoogle, 'push');
+    const pushSpy = vi.spyOn((window as unknown as { adsbygoogle: { push: () => void } }).adsbygoogle, 'push');
 
     const { rerender } = render(<AdUnit slot="789012" />);
     
@@ -102,7 +106,7 @@ describe('AdUnit', () => {
     const originalEnv = process.env.NODE_ENV;
     process.env.NODE_ENV = 'production';
     
-    const pushSpy = vi.spyOn((window as any).adsbygoogle, 'push').mockImplementation(() => {
+    const pushSpy = vi.spyOn((window as unknown as { adsbygoogle: { push: () => void } }).adsbygoogle, 'push').mockImplementation(() => {
       throw new Error("All 'ins' elements in the DOM with class=adsbygoogle already have ads in them.");
     });
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});

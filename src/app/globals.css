@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --brand-blue: #0047FF;
-  --brand-purple: #8F00FF;
-  --brand-orange: #FF5C00;
-  --brand-dark: #14142B;
+  --brand-blue: #0A1C82;
+  --brand-purple: #6B00D7;
+  --brand-orange: #FF3D00;
+  --brand-dark: #0A1C82;
   --brand-grey: #6E7191;
   --brand-white: #FFFFFF;
 }
@@ -42,4 +42,16 @@ body {
 
 @utility text-balance {
   text-wrap: balance;
+}
+
+@utility brand-gradient {
+  background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-purple) 50%, var(--brand-orange) 100%);
+}
+
+@utility brand-gradient-text {
+  background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-purple) 50%, var(--brand-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
