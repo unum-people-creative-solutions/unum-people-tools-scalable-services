@@ -6,7 +6,7 @@ import { AdUnit } from '../components/AdUnit';
 import { LayoutGrid, ArrowRight, BarChart3, Target, Calculator } from 'lucide-react';
 
 export const metadata = {
-  title: 'Home',
+  title: 'Tools | Unum People',
   description: 'Ferramentas inteligentes da Unum People para análise estratégica, ROI de campanhas e lucratividade de serviços.',
 };
 
